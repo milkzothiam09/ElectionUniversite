@@ -6,21 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('elections', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->enum('type', ['chef_departement', 'directeur_ufr', 'vice_recteur']);
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
+            $table->dateTime('candidature_start');
+            $table->dateTime('candidature_end');
+            $table->enum('status', ['preparation', 'candidature', 'voting', 'closed']);
+            $table->foreignId('departement_id')->nullable()->constrained();
+            $table->foreignId('ufr_id')->nullable()->constrained();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('elections');
     }

@@ -6,21 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('resultats', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('election_id')->constrained();
+            $table->foreignId('candidat_id')->nullable()->constrained();
+            $table->integer('votes_count')->default(0);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('resultats');
     }

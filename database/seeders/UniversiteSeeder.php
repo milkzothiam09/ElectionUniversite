@@ -2,16 +2,19 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Universite;
+use App\Models\University;
 use Illuminate\Database\Seeder;
 
 class UniversiteSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        Universite::create([
+            'name' => 'Université de Lomé',
+            'acronym' => 'UL',
+            'city' => 'Lomé',
+            'country' => 'Togo'
+        ]);
     }
 }

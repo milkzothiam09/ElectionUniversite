@@ -2,16 +2,22 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Grade;
 use Illuminate\Database\Seeder;
 
 class GradeSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        $grades = [
+            'Assistant Titulaire',
+            'Maître Assistant Titulaire',
+            'Maître de Conférence Titulaire',
+            'Professeur Titulaire'
+        ];
+
+        foreach ($grades as $grade) {
+            Grade::create(['name' => $grade]);
+        }
     }
 }
