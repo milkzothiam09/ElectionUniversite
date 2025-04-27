@@ -11,6 +11,9 @@ class RoleSeeder extends Seeder
     {
         Role::create(['name' => 'admin', 'guard_name' => 'api']);
         Role::create(['name' => 'per', 'guard_name' => 'api']);
-        Role::create(['name' => 'pats', 'guard_name' => 'api']);
+        Role::create(['name' => 'pats', 'guard_name' => 'api']
+    );
     }
+
+   
 }

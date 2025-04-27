@@ -35,6 +35,7 @@ class ElectionController extends Controller
             'departement_id' => 'required_if:type,chef_departement|exists:departments,id',
             'ufr_id' => 'required_if:type,directeur_ufr|exists:ufrs,id',
         ]);
+        
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
