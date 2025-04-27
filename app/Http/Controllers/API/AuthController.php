@@ -55,7 +55,7 @@ class AuthController extends Controller
     {
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json([
-                'message' => 'Invalid login details'
+                'message' => 'Identifiants invalides!!!'
             ], 401);
         }
 
@@ -76,7 +76,7 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'message' => 'Successfully logged out'
+            'message' => 'Déconnexion réussie'
         ]);
     }
 
@@ -84,7 +84,7 @@ class AuthController extends Controller
     {
         $user = $request->user();
         $user->load(['grade', 'departement', 'ufr', 'roles']);
-        
+
         return response()->json($user);
     }
 }

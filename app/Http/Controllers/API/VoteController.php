@@ -21,7 +21,7 @@ class VoteController extends Controller
         // Vérifier que l'élection est en cours
         $now = Carbon::now();
         if ($now < $election->start_date || $now > $election->end_date) {
-            return response()->json(['message' => 'L\'élection n\'est pas ouverte au vote'], 403);
+            return response()->json(['message' => 'L\'élection n\'est pas ouverte encore au vote'], 403);
         }
 
         // Vérifier que l'utilisateur est éligible pour voter

@@ -54,7 +54,7 @@ class ResultatController extends Controller
         }
 
         // Mettre à jour le statut de l'élection
-        $election->update(['status' => 'closed']);
+        $election->update(['status' => 'Fermée!!!']);
 
         $results = Resultat::where('election_id', $electionId)
             ->with(['candidate.user'])

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('type', ['PER', 'PATS']);
             $table->foreignId('grade_id')->nullable()->constrained();
-            $table->foreignId('department_id')->nullable()->constrained();
+            $table->foreignId('departement_id')->nullable()->constrained();
             $table->foreignId('ufr_id')->nullable()->constrained();
             $table->rememberToken();
             $table->timestamps();
