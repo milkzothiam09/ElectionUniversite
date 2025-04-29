@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ElectionSeeder::class,
             CandidatSeeder::class,
+            BulletinSeeder::class,
+            ProcesVerbalSeeder::class
         ]);
     }
 }

@@ -18,9 +18,9 @@ class User extends Authenticatable
         'email',
         'password',
         'type',
-        'grade_id',
-        'departement_id',
-        'ufr_id'
+        'grades_id',
+        'departements_id',
+        'ufrs_id'
     ];
 
     protected $hidden = [
@@ -58,4 +58,35 @@ class User extends Authenticatable
     {
         return $this->hasMany(Vote::class, 'voter_hash', 'voter_hash');
     }
+
+    public function bulletins()
+    {
+        return $this->hasMany(Bulletin::class);
+    }
+
+    public function voter(Election $election, $candidatId = null)
+    {
+        if (!$this->verifierDroitVote($election)) {
+            throw new \Exception("Droit de vote non autorisé");
+        }
+
+        return Bulletin::create([
+            'elections_id' => $election->id,
+            'users_id' => $this->id,
+            'choix' => $candidatId ? 'pour' : 'null',
+            'date_vote' => now()
+        ]);
+    }
+
+    public function verifierDroitVote(Election $election)
+    {
+        if ($this->type === 'PER') {
+            return $this->departement_id === $election->departement_id;
+        } elseif ($this->type === 'PATS') {
+            return $this->ufr_id === $election->ufr_id;
+        }
+
+        return false;
+    }
+    
 }

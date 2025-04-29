@@ -10,8 +10,8 @@ class Resultat extends Model
     use HasFactory;
 
     protected $fillable = [
-        'election_id',
-        'candidat_id',
+        'elections_id',
+        'candidats_id',
         'votes_count'
     ];
 

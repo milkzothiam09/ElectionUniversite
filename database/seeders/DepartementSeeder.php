@@ -10,16 +10,16 @@ class DepartementSeeder extends Seeder
     public function run()
     {
         $departements = [
-            ['name' => 'Informatique', 'ufr_id' => 1],
-            ['name' => 'Mathématiques', 'ufr_id' => 1],
-            ['name' => 'Physique', 'ufr_id' => 1],
-            ['name' => 'Chimie', 'ufr_id' => 1],
-            ['name' => 'Lettres Modernes', 'ufr_id' => 2],
-            ['name' => 'Philosophie', 'ufr_id' => 2],
-            ['name' => 'Histoire', 'ufr_id' => 2],
-            ['name' => 'Droit Public', 'ufr_id' => 3],
-            ['name' => 'Droit Privé', 'ufr_id' => 3],
-            ['name' => 'Médecine Générale', 'ufr_id' => 4],
+            ['name' => 'Informatique', 'ufrs_id' => 1],
+            ['name' => 'Mathématiques', 'ufrs_id' => 1],
+            ['name' => 'Physique', 'ufrs_id' => 1],
+            ['name' => 'Chimie', 'ufrs_id' => 1],
+            ['name' => 'Lettres Modernes', 'ufrs_id' => 2],
+            ['name' => 'Philosophie', 'ufrs_id' => 2],
+            ['name' => 'Histoire', 'ufrs_id' => 2],
+            ['name' => 'Droit Public', 'ufrs_id' => 3],
+            ['name' => 'Droit Privé', 'ufrs_id' => 3],
+            ['name' => 'Médecine Générale', 'ufrs_id' => 4],
         ];
 
         foreach ($departements as $departement) {

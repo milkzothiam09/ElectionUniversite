@@ -10,8 +10,8 @@ class Candidat extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'election_id',
+        'users_id',
+        'elections_id',
         'status',
         'motivation'
     ];

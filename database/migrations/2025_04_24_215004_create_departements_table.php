@@ -9,9 +9,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('departements', function (Blueprint $table) {
-            $table->id();
+            $table->id()->primary();;
             $table->string('name');
-            $table->foreignId('ufr_id')->constrained();
+            $table->foreignId('ufrs_id')->constrained('ufrs');
             $table->timestamps();
         });
     }

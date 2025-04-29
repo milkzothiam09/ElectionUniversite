@@ -9,9 +9,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ufrs', function (Blueprint $table) {
-            $table->id();
+            $table->id()->primary();;
             $table->string('name');
-            $table->foreignId('universite_id')->constrained();
+            $table->foreignId('universites_id')->constrained('universites');
             $table->timestamps();
         });
     }

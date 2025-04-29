@@ -21,6 +21,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/elections/eligible', [ElectionController::class, 'eligibleElections']);
     Route::get('/elections/{id}', [ElectionController::class, 'show']);
 
+    // Bulletins
+    Route::post('/elections/{election}/vote', [BulletinController::class, 'store']);
+
     // Candidats
     Route::get('/elections/{electionId}/candidates', [CandidatController::class, 'index']);
     Route::post('/elections/{electionId}/candidates', [CandidatController::class, 'store']);
@@ -31,6 +34,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Results
     Route::get('/elections/{electionId}/results', [ResultatController::class, 'getResults']);
 
+    // Procès-verbaux
+    Route::post('/elections/{election}/generate-pv', [ProcesVerbalController::class, 'generer']);
+    Route::get('/proces-verbaux/{id}/download', [ProcesVerbalController::class, 'telecharger']);
     // Admin routes
     Route::middleware('can:manage-election')->group(function () {
         Route::post('/elections', [ElectionController::class, 'store']);

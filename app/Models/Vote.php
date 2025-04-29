@@ -10,8 +10,8 @@ class Vote extends Model
     use HasFactory;
 
     protected $fillable = [
-        'election_id',
-        'candidat_id',
+        'elections_id',
+        'candidats_id',
         'voter_hash',
         'is_null'
     ];

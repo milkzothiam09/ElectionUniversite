@@ -18,8 +18,8 @@ class Election extends Model
         'candidature_start',
         'candidature_end',
         'status',
-        'departement_id',
-        'ufr_id'
+        'departements_id',
+        'ufrs_id'
     ];
 
     protected $casts = [

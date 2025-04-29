@@ -9,9 +9,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('resultats', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('election_id')->constrained();
-            $table->foreignId('candidat_id')->nullable()->constrained();
+            $table->id()->primary();;
+            $table->foreignId('elections_id')->constrained('elections');
+            $table->foreignId('candidats_id')->nullable()->constrained('candidats');
             $table->integer('votes_count')->default(0);
             $table->timestamps();
         });

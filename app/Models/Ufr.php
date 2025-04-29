@@ -9,7 +9,7 @@ class Ufr extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'universite_id'];
+    protected $fillable = ['name', 'universites_id'];
 
     public function university()
     {

@@ -9,10 +9,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('candidats', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('election_id')->constrained();
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->id()->primary();;
+            $table->foreignId('users_id')->constrained('users');
+            $table->foreignId('elections_id')->constrained('elections');
+            $table->enum('status', ['en attente', 'approuvé', 'rejeté'])->default('en attente');
             $table->text('motivation')->nullable();
             $table->timestamps();
         });
