@@ -6,7 +6,11 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ElectionController;
 use App\Http\Controllers\API\CandidatController;
 use App\Http\Controllers\API\VoteController;
+use App\Http\Controllers\API\ProcesVerbalController;
+use App\Http\Controllers\API\BulletinController;
 use App\Http\Controllers\API\ResultatController;
+use App\Http\Controllers\API\PersonnelController;
+
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -49,4 +53,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/elections/{electionId}/calculate-results', [ResultatController::class, 'calculateResults']);
         Route::get('/elections/{electionId}/pv', [ResultatController::class, 'generatePV']);
     });
+
+    // Personnel routes
+    Route::apiResource('personnel', PersonnelController::class);
+
+
+    Route::post('/personnel/{personnel}/voter', [PersonnelController::class, 'voter']);
+    Route::post('/personnel/{personnel}/candidater', [PersonnelController::class, 'seCandidater']);
+    Route::get('/personnel/{personnel}/election/{election}/droit-vote', [PersonnelController::class, 'verifierDroitVote']);
 });

@@ -1,9 +1,11 @@
-namespace App\Http\Controllers\API;
+<?php
+
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\ProcesVerbal;
 use App\Models\Election;
-use Illuminate\Http\Request;
 
 class ProcesVerbalController extends Controller
 {

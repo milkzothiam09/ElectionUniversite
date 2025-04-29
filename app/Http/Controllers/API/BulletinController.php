@@ -1,24 +1,26 @@
-namespace App\Http\Controllers\API;
+<?php
+
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Bulletin;
-use App\Models\Election;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Election;
 class BulletinController extends Controller
 {
-    public function store(Request $request, $electionId)
-    {
-        $request->validate([
-            'candidat_id' => 'nullable|exists:candidates,id'
-        ]);
 
-        $user = Auth::user();
-        $election = Election::findOrFail($electionId);
+        public function store(Request $request, $electionId)
+        {
+            $request->validate([
+                'candidat_id' => 'nullable|exists:candidates,id'
+            ]);
 
-        $bulletin = $user->voter($election, $request->candidate_id);
+            $user = Auth::user();
+            $election = Election::findOrFail($electionId);
 
-        return response()->json($bulletin, 201);
-    }
+            $bulletin = $user->voter($election, $request->candidate_id);
+
+            return response()->json($bulletin, 201);
+        }
+
 }
