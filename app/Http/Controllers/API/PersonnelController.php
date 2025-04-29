@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use Illuminate\Http\Request;
 use App\Models\Personnel;
 use App\Models\Election;
 use App\Models\Candidat;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Enum;
 use App\Enums\PersonnelType; 
@@ -113,9 +115,12 @@ class PersonnelController extends Controller
     public function verifierDroitVote(Personnel $personnel, Election $election)
     {
         try {
+            // Vérification du droit de vote
             $droitVote = $personnel->verifierDroitVote($election);
             return response()->json(['droit_vote' => $droitVote]);
         } catch (\Exception $e) {
+            // Gestion des exceptions
+
             return response()->json(['error' => $e->getMessage()], 400);
         }
     }
