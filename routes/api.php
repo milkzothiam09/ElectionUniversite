@@ -17,7 +17,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'userProfile']);
-    
+
     // Elections
     Route::get('/elections', [ElectionController::class, 'index']);
     Route::get('/elections/current', [ElectionController::class, 'currentElections']);
@@ -25,7 +25,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/elections/{id}', [ElectionController::class, 'show']);
 
     // Bulletins
-    Route::post('/elections/{election}/vote', [BulletinController::class, 'store']);
+    Route::post('/elections/{electionId}/bulletins', [BulletinController::class, 'store']);
+
 
     // Candidats
     Route::get('/elections/{electionId}/candidates', [CandidatController::class, 'index']);
@@ -37,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/personnels/{personnel}', [PersonnelController::class, 'show']);
     Route::put('/personnels/{personnel}', [PersonnelController::class, 'update']);
     Route::delete('/personnels/{personnel}', [PersonnelController::class, 'destroy']);
- 
+
      // Routes personnalisées pour Personnel
     Route::post('/personnels/{personnel}/voter', [PersonnelController::class, 'voter']);
     Route::post('/personnels/{personnel}/se-candidater', [PersonnelController::class, 'seCandidater']);
@@ -52,10 +53,10 @@ Route::middleware('auth:sanctum')->group(function () {
     // Procès-verbaux
     Route::post('/elections/{election}/generate-pv', [ProcesVerbalController::class, 'generer']);
     Route::get('/proces-verbaux/{id}/download', [ProcesVerbalController::class, 'telecharger']);
-   
+
     // Admin routes
     Route::middleware('can:manage-election')->group(function () {
-        
+
         Route::post('/elections', [ElectionController::class, 'store']);
         Route::put('/elections/{id}', [ElectionController::class, 'update']);
         Route::delete('/elections/{id}', [ElectionController::class, 'destroy']);
@@ -67,5 +68,5 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/elections/{electionId}/pv', [ResultatController::class, 'generatePV']);
     });
 
-  
+
 });
