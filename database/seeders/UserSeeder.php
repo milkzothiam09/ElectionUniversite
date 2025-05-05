@@ -10,7 +10,7 @@ class UserSeeder extends Seeder
 {
     public function run(){
         // Create admin user
-        
+
 
       $email = 'admin@univ.edu';
 

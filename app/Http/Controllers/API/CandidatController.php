@@ -12,7 +12,7 @@ class CandidatController extends Controller
 {
     public function index($electionId)
     {
-        $candidates = Candidat::where('election_id', $electionId)
+        $candidates = Candidat::where('elections_id', $electionId)
             ->with(['user', 'user.grade', 'user.department'])
             ->get();
 
@@ -45,8 +45,8 @@ class CandidatController extends Controller
         }
 
         // Vérifier que l'utilisateur n'a pas déjà candidaté
-        $existingCandidate = Candidat::where('user_id', $user->id)
-            ->where('election_id', $electionId)
+        $existingCandidate = Candidat::where('users_id', $user->id)
+            ->where('elections_id', $electionId)
             ->first();
 
         if ($existingCandidate) {
@@ -62,8 +62,8 @@ class CandidatController extends Controller
         }
 
         $candidate = Candidat::create([
-            'user_id' => $user->id,
-            'election_id' => $electionId,
+            'users_id' => $user->id,
+            'elections_id' => $electionId,
             'status' => 'pending',
             'motivation' => $request->motivation,
         ]);

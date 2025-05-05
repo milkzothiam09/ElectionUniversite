@@ -97,7 +97,7 @@ class Personnel extends Authenticatable
         // Créer la candidature
         $candidat = new Candidat([
             'personnel_id' => $this->id,
-            'election_id' => $election->id,
+            'elections_id' => $election->id,
             'date_candidature' => now(),
         ]);
 

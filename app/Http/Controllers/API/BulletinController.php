@@ -12,7 +12,7 @@ class BulletinController extends Controller
         public function store(Request $request, $electionId)
         {
             $request->validate([
-                'candidat_id' => 'nullable|exists:candidates,id'
+                'candidats_id' => 'nullable|exists:candidates,id'
             ]);
 
             $user = Auth::user();

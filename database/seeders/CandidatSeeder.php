@@ -41,8 +41,8 @@ class CandidatSeeder extends Seeder
         $perUsers = User::where('type', 'PER')->take(4)->get();
         foreach ($perUsers as $user) {
             Candidat::create([
-                'user_id' => $user->id,
-                'election_id' => $election3->id,
+                'users_id' => $user->id,
+                'elections_id' => $election3->id,
                 'status' => 'approuvé',
                 'motivation' => 'Projet pour l\'université'
             ]);

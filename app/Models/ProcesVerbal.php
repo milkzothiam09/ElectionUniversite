@@ -9,7 +9,7 @@ class ProcesVerbal extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['election_id', 'contenu', 'date_generation'];
+    protected $fillable = ['elections_id', 'contenu', 'date_generation'];
     protected $casts = ['id' => 'string', 'date_generation' => 'datetime'];
     public $incrementing = false;
     protected $keyType = 'string';

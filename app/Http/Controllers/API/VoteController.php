@@ -38,7 +38,7 @@ class VoteController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'candidate_id' => 'nullable|exists:candidates,id,election_id,' . $electionId,
+            'candidats_id' => 'nullable|exists:candidates,id,election_id,' . $electionId,
         ]);
 
         if ($validator->fails()) {
@@ -47,8 +47,8 @@ class VoteController extends Controller
 
         // Enregistrer le vote
         $vote = Vote::create([
-            'election_id' => $electionId,
-            'candidat_id' => $request->candidat_id,
+            'elections_id' => $electionId,
+            'candidats_id' => $request->candidat_id,
             'voter_hash' => $voterHash,
             'is_null' => $request->candidat_id === null,
         ]);

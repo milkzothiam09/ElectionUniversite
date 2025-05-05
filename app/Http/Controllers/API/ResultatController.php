@@ -22,33 +22,33 @@ class ResultatController extends Controller
         }
 
         // Supprimer les anciens résultats
-        Resultat::where('election_id', $electionId)->delete();
+        Resultat::where('elections_id', $electionId)->delete();
 
         // Calculer les votes par candidat
-        $votesByCandidate = Vote::where('election_id', $electionId)
+        $votesByCandidate = Vote::where('elections_id', $electionId)
             ->where('is_null', false)
-            ->selectRaw('candidate_id, count(*) as votes_count')
-            ->groupBy('candidat_id')
+            ->selectRaw('candidats_id, count(*) as votes_count')
+            ->groupBy('candidats_id')
             ->get();
 
         // Enregistrer les résultats
         foreach ($votesByCandidate as $vote) {
             Resultat::create([
-                'election_id' => $electionId,
-                'candidate_id' => $vote->candidate_id,
+                'elections_id' => $electionId,
+                'candidats_id' => $vote->candidats_id,
                 'votes_count' => $vote->votes_count,
             ]);
         }
 
         // Compter les votes nuls
-        $nullVotesCount = Vote::where('election_id', $electionId)
+        $nullVotesCount = Vote::where('elections_id', $electionId)
             ->where('is_null', true)
             ->count();
 
         if ($nullVotesCount > 0) {
             Resultat::create([
-                'election_id' => $electionId,
-                'candidat_id' => null,
+                'elections_id' => $electionId,
+                'candidats_id' => null,
                 'votes_count' => $nullVotesCount,
             ]);
         }
@@ -65,7 +65,7 @@ class ResultatController extends Controller
 
     public function getResults($electionId)
     {
-        $results = Resultat::where('election_id', $electionId)
+        $results = Resultat::where('elections_id', $electionId)
             ->with(['candidate.user'])
             ->orderBy('votes_count', 'desc')
             ->get();
@@ -76,7 +76,7 @@ class ResultatController extends Controller
     public function generatePV($electionId)
     {
         $election = Election::with(['departement', 'ufr'])->findOrFail($electionId);
-        $results = Resultat::where('election_id', $electionId)
+        $results = Resultat::where('elections_id', $electionId)
             ->with(['candidate.user'])
             ->orderBy('votes_count', 'desc')
             ->get();

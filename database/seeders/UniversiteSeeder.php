@@ -42,7 +42,7 @@ class UniversiteSeeder extends Seeder
         ]);
         Universite::create([
             'name' => 'Université de Bambey',
-            'acronym' => 'UB',
+            'acronym' => 'UADB',
             'city' => 'Bambey',
             'country'=>'Sénégal'
         ]);

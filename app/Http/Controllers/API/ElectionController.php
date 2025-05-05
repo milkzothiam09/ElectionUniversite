@@ -32,10 +32,10 @@ class ElectionController extends Controller
             'end_date' => 'required|date|after:start_date',
             'candidature_start' => 'required|date|before:start_date',
             'candidature_end' => 'required|date|after:candidature_start|before:start_date',
-            'departement_id' => 'required_if:type,chef_departement|exists:departments,id',
-            'ufr_id' => 'required_if:type,directeur_ufr|exists:ufrs,id',
+            'departements_id' => 'required_if:type,chef_departement|exists:departments,id',
+            'ufrs_id' => 'required_if:type,directeur_ufr|exists:ufrs,id',
         ]);
-        
+
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
@@ -50,8 +50,8 @@ class ElectionController extends Controller
             'candidature_start' => $request->candidature_start,
             'candidature_end' => $request->candidature_end,
             'status' => 'preparation',
-            'department_id' => $request->department_id,
-            'ufr_id' => $request->ufr_id,
+            'departments_id' => $request->department_id,
+            'ufrs_id' => $request->ufr_id,
         ]);
 
         return response()->json($election, 201);

@@ -8,7 +8,7 @@ class Bulletin extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['election_id', 'user_id', 'choix', 'date_vote'];
+    protected $fillable = ['elections_id', 'users_id', 'choix', 'date_vote'];
     protected $casts = ['id' => 'string', 'date_vote' => 'datetime'];
     public $incrementing = false;
     protected $keyType = 'string';
@@ -20,7 +20,7 @@ class Bulletin extends Model
 
     public function votant()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'users_id');
     }
 
     public function estValide()

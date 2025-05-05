@@ -19,9 +19,9 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
             'type' => 'required|in:PER,PATS',
-            'grade_id' => 'required_if:type,PER|exists:grades,id',
-            'departement_id' => 'required|exists:departments,id',
-            'ufr_id' => 'required|exists:ufrs,id',
+            'grades_id' => 'required_if:type,PER|exists:grades,id',
+            'departements_id' => 'required|exists:departments,id',
+            'ufrs_id' => 'required|exists:ufrs,id',
         ]);
 
         if ($validator->fails()) {
@@ -33,9 +33,9 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'type' => $request->type,
-            'grade_id' => $request->grade_id,
-            'department_id' => $request->department_id,
-            'ufr_id' => $request->ufr_id,
+            'grades_id' => $request->grade_id,
+            'departments_id' => $request->department_id,
+            'ufrs_id' => $request->ufr_id,
         ]);
 
         // Assign role based on user type

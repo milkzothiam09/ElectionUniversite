@@ -13,12 +13,12 @@ class ProcesVerbalController extends Controller
     {
         $election = Election::findOrFail($electionId);
         $pv = ProcesVerbal::create([
-            'election_id' => $election->id,
+            'elections_id' => $election->id,
             'date_generation' => now()
         ]);
-        
+
         $pv->genererContenu();
-        
+
         return response()->json($pv);
     }
 
