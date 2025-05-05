@@ -10,15 +10,15 @@ class PersonnelSeeder extends Seeder
     public function run()
     {
         // Create 50 random personnel (mix of PER and PATS)
-        Personnel::factory()->count(30)->per()->create();
+        Personnel::factory()->count(30)->per()->create([ 'grades_id' => null ]);
         // Pour les PATS (20)
-        Personnel::factory()->count(20)->pats()->create([ 'grades_id' => null ]);
+        Personnel::factory()->count(20)->pats()->create();
 
         // Create specific admin user
         Personnel::factory()->create([
             'nom' => 'Admin',
             'prenom' => 'User',
-            'email' => 'admin@example.com',
+            'email' => 'admin@exemple.com',
             'motDePasse' => bcrypt('admin123'),
             'type' => 'PER',
         ]);

@@ -38,6 +38,7 @@ class PersonnelFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'type' => 'PER',
+                'grades_id' => null,
             ];
         });
     }
@@ -47,7 +48,6 @@ class PersonnelFactory extends Factory
         return $this->state(function (array $attributes) {
             return [
                 'type' => 'PATS',
-                'grades_id' => null,
             ];
         });
     }
