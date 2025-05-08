@@ -90,7 +90,7 @@ class Personnel extends Authenticatable
         }
 
         // Vérifier si déjà candidat
-        if ($this->candidatures()->where('election_id', $election->id)->exists()) {
+        if ($this->candidatures()->where('elections_id', $election->id)->exists()) {
             throw new \Exception("Vous êtes déjà candidat à cette élection.");
         }
 

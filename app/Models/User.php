@@ -82,11 +82,12 @@ class User extends Authenticatable
     {
         if ($this->type === 'PER') {
             return $this->departement_id === $election->departement_id;
+            
         } elseif ($this->type === 'PATS') {
             return $this->ufr_id === $election->ufr_id;
         }
 
         return false;
     }
-    
+
 }
