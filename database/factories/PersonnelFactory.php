@@ -12,21 +12,21 @@ class PersonnelFactory extends Factory
     {
         return [
             'id' => Uuid::uuid4()->toString(),
-            'nom' => $this->faker->lastName,
-            'prenom' => $this->faker->firstName,
-            'email' => $this->faker->unique()->safeEmail,
+            'nom' => $this->fake()->lastName(),
+            'prenom' => $this->fake()->firstName(),
+            'email' => $this->fake()->unique()->safeEmail(),
             'motDePasse' => bcrypt('password'),
-            'type' => $this->faker->randomElement(['PER', 'PATS']),
+            'type' => $this->fake()->randomElement(['PER', 'PATS']),
             'grades_id' => function () {
-                return \App\Models\Grade::inRandomOrder()->first()->id ?? 
-                       \App\Models\Grade::factory()->create()->id;
+                return \App\Models\Grade::inRandomOrder()->first()->id() ??
+                       \App\Models\Grade::factory()->create()->id();
             },
             'departements_id' => function () {
-                return \App\Models\Departement::inRandomOrder()->first()->id ?? 
-                       \App\Models\Departement::factory()->create()->id;
+                return \App\Models\Departement::inRandomOrder()->first()->id() ??
+                       \App\Models\Departement::factory()->create()->id();
             },
             'ufrs_id' => function () {
-                return \App\Models\Ufr::inRandomOrder()->first()->id ?? 
+                return \App\Models\Ufr::inRandomOrder()->first()->id ??
                        \App\Models\Ufr::factory()->create()->id;
             },
             'remember_token' => Str::random(10),

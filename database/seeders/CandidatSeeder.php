@@ -19,19 +19,19 @@ class CandidatSeeder extends Seeder
         $perUsers = User::where('type', 'PER')->where('departement_id', 1)->take(3)->get();
         foreach ($perUsers as $user) {
             Candidat::create([
-                'user_id' => $user->id,
-                'election_id' => $election1->id,
+                'users_id' => $user->id,
+                'elections_id' => $election1->id,
                 'status' => 'approuvé',
                 'motivation' => 'Je souhaite contribuer au développement du département'
             ]);
         }
 
         // Candidats pour l'élection 2 (directeur UFR)
-        $perUsers = User::where('type', 'PER')->where('ufr_id', 1)->take(3)->get();
+        $perUsers = User::where('type', 'PER')->where('ufrs_id', 1)->take(3)->get();
         foreach ($perUsers as $user) {
             Candidat::create([
-                'user_id' => $user->id,
-                'election_id' => $election2->id,
+                'users_id' => $user->id,
+                'elections_id' => $election2->id,
                 'status' => 'approuvé',
                 'motivation' => 'Vision pour l\'UFR Sciences'
             ]);

@@ -12,15 +12,15 @@ class ProcesVerbalSeeder extends Seeder
      * Run the database seeds.
      */
     public function run()
-{
-    $elections = Election::all();
+    {
+        $elections = Election::all();
 
-    foreach ($elections as $election) {
-        ProcesVerbal::create([
-            'elections_id' => $election->id(),
-            'contenu' => "Résultats de l'élection ".$election->title(),
-            'date_generation' => now()
-        ]);
+        foreach ($elections as $election) {
+            ProcesVerbal::create([
+                'elections_id' => $election->id(),
+                'contenu' => "Résultats de l'élection ".$election->title(),
+                'date_generation' => now()
+            ]);
+        }
     }
-}
 }

@@ -18,17 +18,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'userProfile']);
 
-    // Elections
+    //  Routes pour  ElectionController
     Route::get('/elections', [ElectionController::class, 'index']);
+    Route::get('/elections/{id}', [ElectionController::class, 'show']);
     Route::get('/elections/current', [ElectionController::class, 'currentElections']);
     Route::get('/elections/eligible', [ElectionController::class, 'eligibleElections']);
-    Route::get('/elections/{id}', [ElectionController::class, 'show']);
 
-    // Bulletins
+
+    // Routes pour BulletinController
     Route::post('/elections/{electionId}/bulletins', [BulletinController::class, 'store']);
 
 
-    // Candidats
+    // Routes pour CandidatController
     Route::get('/elections/{electionId}/candidates', [CandidatController::class, 'index']);
     Route::post('/elections/{electionId}/candidates', [CandidatController::class, 'store']);
 
@@ -39,18 +40,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/personnels/{personnel}', [PersonnelController::class, 'update']);
     Route::delete('/personnels/{personnel}', [PersonnelController::class, 'destroy']);
 
-     // Routes personnalisées pour Personnel
+     // Routes personnalisées pour PersonnelController
     Route::post('/personnels/{personnel}/voter', [PersonnelController::class, 'voter']);
     Route::post('/personnels/{personnel}/se-candidater', [PersonnelController::class, 'seCandidater']);
     Route::get('/personnels/{personnel}/verifier-droit-vote/{election}', [PersonnelController::class, 'verifierDroitVote']);
 
-    // Votes
+    //Routes pour  VoteController
     Route::post('/elections/{electionId}/vote', [VoteController::class, 'vote']);
 
-    // Results
+    // Routes pour ResultatController
     Route::get('/elections/{electionId}/results', [ResultatController::class, 'getResults']);
 
-    // Procès-verbaux
+    // Routes pour Procès-verbalController
     Route::post('/elections/{election}/generate-pv', [ProcesVerbalController::class, 'generer']);
     Route::get('/proces-verbaux/{id}/download', [ProcesVerbalController::class, 'telecharger']);
 

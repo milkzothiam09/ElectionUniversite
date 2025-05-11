@@ -13,7 +13,7 @@ class ProcesVerbalFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->uuid,
+            'id' => $this->fake()->uuid(),
             'elections_id' => Election::factory(),
             'contenu' => $this->generateContenu(),
             'date_generation' => $this->faker->dateTimeBetween('-1 month', 'now'),

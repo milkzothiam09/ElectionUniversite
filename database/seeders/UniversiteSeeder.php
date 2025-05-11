@@ -13,6 +13,7 @@ class UniversiteSeeder extends Seeder
         Universite::create([
             'name' => 'Université de Thiès',
             'acronym' => 'UT',
+            'address' => '',
             'city' => 'Thiès',
             'country' => 'Sénégal'
         ]);
@@ -20,29 +21,36 @@ class UniversiteSeeder extends Seeder
         Universite::create([
             'name' => 'Université Cheikh Anta Diop',
             'acronym' => 'UCAD',
-            'city' => 'Dakar'
+            'address' => '',
+            'city' => 'Dakar',
+            'country' => 'Sénégal'
+            
         ]);
         Universite::create([
             'name' => 'Université de Sédhiou',
             'acronym' => 'US',
+            'address' => '',
             'city' => 'Sédhiou',
             'country'=>'Sénégal'
         ]);
         Universite::create([
             'name' => 'Université de Kara',
             'acronym' => 'UK',
+            'address' => '',
             'city' => 'Tamba',
             'country'=>'Sénégal'
         ]);
         Universite::create([
             'name' => 'Université de Ziguinchor',
             'acronym' => 'UZ',
+            'address' => '',
             'city' => 'Ziguinchor',
             'country'=>'Sénégal'
         ]);
         Universite::create([
             'name' => 'Université de Bambey',
             'acronym' => 'UADB',
+            'address' => '',
             'city' => 'Bambey',
             'country'=>'Sénégal'
         ]);
@@ -50,6 +58,7 @@ class UniversiteSeeder extends Seeder
         Universite::create([
             'name' => 'Université de Gaston Berger',
             'acronym' => 'UGB',
+            'address' => '',
             'city' => 'Saint-Louis',
             'country'=>'Sénégal'
         ]);

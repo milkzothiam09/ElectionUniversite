@@ -14,7 +14,7 @@ class BulletinFactory extends Factory
     public function definition()
     {
         return [
-            'id' => $this->faker->uuid,
+            'id' => $this->fake()->uuid(),
             'elections_id' => Election::factory(),
             'users_id' => User::factory(),
             'choix' => $this->faker->randomElement(['pour', 'null']),

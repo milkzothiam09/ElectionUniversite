@@ -22,7 +22,7 @@ class ElectionSeeder extends Seeder
             'candidature_start' => $now,
             'candidature_end' => $now->copy()->addDays(5),
             'status' => 'candidature',
-            'departement_id' => 1
+            'departements_id' => 1
         ]);
 
         // Directeur UFR élection
@@ -35,7 +35,7 @@ class ElectionSeeder extends Seeder
             'candidature_start' => $now,
             'candidature_end' => $now->copy()->addDays(7),
             'status' => 'candidature',
-            'ufr_id' => 1
+            'ufrs_id' => 1
         ]);
 
         // Vice-Recteur élection
